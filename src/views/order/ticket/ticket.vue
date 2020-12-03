@@ -7,7 +7,9 @@
     ></el-input>
     <el-button icon="el-icon-search" class="btn"></el-button>
     <el-button class="addBtn" type="primary">添加购票须知</el-button>
-    <el-button class="addBtn" type="primary">添加票类</el-button>
+    <el-button class="addBtn" type="primary" @click="addPl">添加票类</el-button>
+    <!-- 添加/修改组件 -->
+    <v-info :info="info"></v-info>
     <template>
       <el-table
         ref="multipleTable"
@@ -55,7 +57,7 @@
         </el-table-column>
       </el-table>
       <!--分页-->
-      <el-col :span="24" class="toolbar">
+      <!-- <el-col :span="24" class="toolbar">
         <div class="allControl">
           <el-button size="small">删除</el-button>
         </div>
@@ -66,15 +68,16 @@
           @size-change="handleSizeChange"
           :page-sizes="[10, 15, 20, 30, 50]"
           :page-size="10"
-          total= "10"
+          total="10"
         ></el-pagination>
         <el-button size="small">确定</el-button>
-      </el-col>
+      </el-col> -->
     </template>
   </div>
 </template>
 
 <script>
+import VInfo from "./vinfo";
 export default {
   data() {
     return {
@@ -162,9 +165,15 @@ export default {
         },
       ],
       multipleSelection: [],
+      info: {
+        isAdd: false,
+        isShow: false,
+      },
     };
   },
-
+  components: {
+    VInfo,
+  },
   methods: {
     toggleSelection(rows) {
       if (rows) {
@@ -188,6 +197,9 @@ export default {
       this.query.page = val;
       this.resLoading = true;
       this.queryElementList();
+    },
+    addPl() {
+      this.info.isAdd = this.info.isShow = true;
     },
   },
 };

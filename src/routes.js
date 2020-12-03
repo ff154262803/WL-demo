@@ -55,7 +55,7 @@ import heads from './views/gohome/heads'//头图管理
 import functions from './views/gohome/functions'//功能按钮
 import bright from './views/gohome/bright'//夜游亮点
 import multiprobe from './views/gohome/multiprobe'// 夜探阿朵
-import ticket from './views/order/ticket'//购票管理
+import ticket from './views/order/ticket/ticket'//购票管理
 import order from './views/order/order.vue'//订单管理
 import statistics from './views/order/statistics'//售票统计
 
