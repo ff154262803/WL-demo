@@ -55,6 +55,9 @@ import heads from './views/gohome/heads'//头图管理
 import functions from './views/gohome/functions'//功能按钮
 import bright from './views/gohome/bright'//夜游亮点
 import multiprobe from './views/gohome/multiprobe'// 夜探阿朵
+import ticket from './views/order/ticket'//购票管理
+import order from './views/order/order.vue'//订单管理
+import statistics from './views/order/statistics'//售票统计
 
 
 const metaTrue = { meta: { requireAuth: true } }
@@ -117,11 +120,13 @@ const router = new VueRouter({
             children: [
                 { path: '/user', component: user, name: '用户管理', ...metaTrue },
             ],
-            // },
-            // {path: '/', component: Home, name: 'orderlist', hidden: false, meta: {requireAuth: true, level: 1},
-            //     children: [
-            //         {path: '/orderlist', component: orderlist, name: '订单管理', ...metaTrue},
-            //     ]
+            },
+            {path: '/', component: Home, name: 'ticket', hidden: false, meta: {requireAuth: true, level: 2},
+                children: [
+                    {path: '/ticket', component: ticket, name: '票务管理', ...metaTrue},
+                    {path: '/order', component: order, name: '订单管理', ...metaTrue},
+                    {path: '/statistics', component: statistics, name: '售票统计', ...metaTrue},
+                ]
         },
         {
             path: '/', component: Home, name: 'basic', hidden: false, unfold: true, meta: { requireAuth: true, level: 2 },
